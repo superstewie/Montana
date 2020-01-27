@@ -1,26 +1,35 @@
-We intend to use a branching strategy very closely based on [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/).
-
 # Branching Guidelines
+<!-- Put some introductory text here -->
+Montana uses a branching strategy very closely based on [gitflow](https://nvie.com/posts/a-successful-git-branching-model/).
+This document lays out in full detail the specific branching strategy and related terminology that we use.
 
-The repository has the following types of branches:
-- master
-- development
-- feature
-- experimental
-- acceptance
-- hotFix
-- build
+<!-- Should I build graphics to describe the three categories? -->
+<!-- Then, describe the three categories of branches -->
+We divide branches into three broad categories:
+- _Permanent_ branches which once created always exist and never change
+  - Are used to create indestructable snapshots of the state of the project at a moment in time
+- _Long Lived_ branches which always exist, but can be committed to more than once
+  - Are used to create running records of the projects state over time
+- _Short Lived_ branches which are created and destroyed at will
+  - Are used to modify the state of the project
 
-This is what each branch is used for
+<!-- Finally, classify the actual branch types into the categories -->
+There are six concrete branch types:
+- The _master_ branch is a long lived branch used to record the distributable state of the project
+- The _development_ branch is a long lived branch used to record all work done on the project
+- _release_ branches are short lived branches used to prepare a development commit for merging into the _master_ branch
+- _feature_ branches are short lived branches used to do work on the project
+- _hotfix_ branches are short lived branches used to fix problems in the master branch
+- _build_ branches are permanent branches used to record build artifacts from the master branch
+<!-- build branches could have many uses. Two possibilities are building nuget packages and creating
+     entry points for Long-Term Support versions. 
 
-- The _master_ branch contains all deliverable builds. There is only one _master_ branch.
-- The _development_ branch serves as the trunk of the development tree. There is only one _development_ branch.
-- A _feature_ branch is where new development takes place.
-- An _experimental_ branch is where experimentation can take place and be recorded with no risk to the repository.
-- An _acceptance_ branch is where final testing is done on potential releases
-- A _hotFix_ branch is where bug fixes to delivered builds take place.
-- A _build_ branch is where accepted code is prepared for the _master_ branch
+#### Branching Rules
 
-What follows is a graph which will help to describe the flow of the branching strategy:
+<!-- Here I want to describe the rules of working with branches -->
+<!-- I want to make sure to layout the commands to be used in foreseeable situations -->
 
 ![Graph describing the branching flow](BranchDirection.png)
+
+*Fig. 1 describes where each type of branch comes from, as well as where each type of branch can be merged to.*
+
